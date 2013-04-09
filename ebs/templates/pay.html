@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="no-store, no-cache, must-revalidate">
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-store, no-cache, must-revalidate">
+<!-- -----------------------------------------------------------------------------------------
+# Currently the body tag was set so that form will be sent automatically.
+# 
+# Merchants are welcome to NOT have this page being sent automatically. They may use this page
+# to display a confirmation message, with a submit/confirm button for the cardholders to press.
+# Beware that you will need to include the submit button to your hash also.
+------------------------------------------------------------------------------------------- -->
+<body onLoad="order.submit()">
+	<form name="order" action="{{ pg_url }}" method="post">
+	<p>Please wait while your payment is being processed...</p>
+	{% for (key, value) in post_data %}
+        	<input type="hidden" name="{{ key }}" value="{{ value[0] }}"/>
+	{% end %}	
+	<!-- attach SecureHash -->
+    <input type="hidden" name="vpc_SecureHash" value="{{ md5_hash }}"/>
+    <input type="submit">
+	</form>
+</body>
+</html>
+
+

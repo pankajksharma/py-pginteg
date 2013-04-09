@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <body onload="payu_form.submit()">
+    <h2>PayU Form</h2>
+    <br/>
+    <form action="{{pg_url}}" name="payu_form" method="post" name="payuForm">
+      {% for key in data.iterkeys() %}
+        <input type="text" name="{{key}}" value="{{data[key][0]}}" />
+      {% end %}
+      <input type="hidden" name="hash" val={{hash}}>
+      <!-- <input type="submit" value="Submit" /> -->
+    </form>
+
+  </body>
+</html>
