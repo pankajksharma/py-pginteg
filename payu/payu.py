@@ -1,4 +1,4 @@
-import os
+import os, binascii
 import hashlib, base64
 import urllib, urllib2
 import tornado.httpserver
@@ -35,9 +35,11 @@ class PayHandler(BaseHandler):
 
     def post(self):
         posted_params = self.request.arguments
-        posted_params['txnid'] = ['82f360f196b33135da2e']
+        posted_params['txnid'] = self.get_order_id()
+        print posted_params['txnid']
         hashed_val = self.get_hash(posted_params)
-        #posted_params['hash'] = hashed_val
+        # posted_params = self.sort(posted_params)
+        posted_params['hash'] = hashed_val
         # data = urllib.urlencode(posted_params)
         # req = urllib2.urlopen(self.PAYU_BASE_URL, data)
         # self.write(req.read())
@@ -45,6 +47,11 @@ class PayHandler(BaseHandler):
         self.write(str(posted_params))
         self.render('pay.html', data=posted_params, hash=hashed_val, pg_url=self.PAYU_BASE_URL)
 
+    def get_order_id(self):
+        return binascii.b2a_hex(os.urandom(15))
+
+    def sort(self, posted_params):
+        return [(key, posted_params[key]) for key in self.hashSequence.split('|')]
 
     def get_hash(self, posted_params):
         hash_str = ''

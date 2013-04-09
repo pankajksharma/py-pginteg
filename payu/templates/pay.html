@@ -3,12 +3,134 @@
   <body onload="payu_form.submit()">
     <h2>PayU Form</h2>
     <br/>
-    <form action="{{pg_url}}" name="payu_form" method="post" name="payuForm">
-      {% for key in data.iterkeys() %}
-        <input type="text" name="{{key}}" value="{{data[key][0]}}" />
-      {% end %}
-      <input type="hidden" name="hash" val={{hash}}>
-      <!-- <input type="submit" value="Submit" /> -->
+    <form action="{{pg_url}}" method="post" name="payu_form">
+      <input type="hidden" name="key" type="hidden" value="C0Dr8m" />
+      <input type="hidden" name="hash" type="hidden" value="{{hash}}"/>
+      <input type="hidden" name="txnid" type="hidden" value="{{data['txnid'][0]}}" />
+      <table>
+        <tr>
+          <td><b>Mandatory Parameters</b></td>
+        </tr>
+        <tr>
+          <td>Amount: </td>
+          <td><input name="amount" type="hidden" value="{{data['amount'][0]}}" /></td>
+          <td>First Name: </td>
+          <td><input name="firstname" id="firstname" type="hidden" value="{{data['firstname'][0]}}" /></td>
+        </tr>
+        <tr>
+          <td>Email: </td>
+          <td><input name="email" id="email" type="hidden" value="{{data['email'][0]}}" /></td>
+          <td>Phone: </td>
+          <td><input name="phone" type="hidden" value="{{data['phone'][0]}}" /></td>
+        </tr>
+        <tr>
+          <td>Product Info: </td>
+          <td colspan="3"><input name="productinfo" type="hidden" value="{{data['productinfo'][0]}}" size="64" /></td>
+        </tr>
+        <tr>
+          <td>Success URI: </td>
+          <td colspan="3"><input name="surl" type="hidden" value="{{data['surl'][0]}}" size="64" /></td>
+        </tr>
+        <tr>
+          <td>Failure URI: </td>
+          <td colspan="3"><input name="furl" type="hidden" value="{{data['furl'][0]}}" size="64" /></td>
+        </tr>
+        <tr>
+          <td>bankcode: </td>
+          <td><input name="bankcode" type="hidden" value="{{data['bankcode'][0]}}" /></td>
+        </tr>
+        <tr>
+            <td>PG: </td>
+          <td><input name="pg" type="hidden" value="{{data['pg'][0]}}" /></td>
+        </tr>
+         <tr>
+          <td>CCNAME: </td>
+          <td><input name="ccname" type="hidden" value="{{data['ccname'][0]}}" /></td>
+        </tr>
+         <tr>
+            <td>CCNUM: </td>
+          <td><input name="ccnum" type="hidden" value="{{data['ccnum'][0]}}" /></td>
+        </tr>
+        <tr>
+            <td>CCVV: </td>
+          <td><input name="ccvv" type="hidden" value="{{data['ccvv'][0]}}" /></td>
+        </tr>
+        <tr>
+            <td>CCEXPMON: </td>
+          <td><input name="ccexpmon" type="hidden" value="{{data['ccexpmon'][0]}}" /></td>
+        </tr>
+        
+        <tr>
+            <td>CCEXPYR: </td>
+          <td><input name="ccexpyr" type="hidden" value="{{data['ccexpyr'][0]}}" /></td>
+        </tr>
+        <tr>
+          <td><b>Optional Parameters</b></td>
+        </tr>
+        <tr>
+          <td>Last Name: </td>
+          <td><input name="lastname" id="lastname" type="hidden" value="" /></td>
+          <td>Cancel URI: </td>
+          <td><input name="curl" type="hidden" value="" /></td>
+        </tr>
+        <tr>
+          <td>Address1: </td>
+          <td><input name="address1" type="hidden" value="" /></td>
+          <td>Address2: </td>
+          <td><input name="address2" type="hidden" value="" /></td>
+        </tr>
+        <tr>
+          <td>City: </td>
+          <td><input name="city" type="hidden" value="" /></td>
+          <td>State: </td>
+          <td><input name="state" type="hidden" value="" /></td>
+        </tr>
+        <tr>
+          <td>Country: </td>
+          <td><input name="country" type="hidden" value="" /></td>
+          <td>Zipcode: </td>
+          <td><input name="zipcode" type="hidden" value="" /></td>
+        </tr>
+        <tr>
+          <td>UDF1: </td>
+          <td><input name="udf1" type="hidden" value="" /></td>
+          <td>UDF2: </td>
+          <td><input name="udf2" type="hidden" value="" /></td>
+        </tr>
+        <tr>
+          <td>UDF3: </td>
+          <td><input name="udf3" type="hidden" value="" /></td>
+          <td>UDF4: </td>
+          <td><input name="udf4" type="hidden" value="" /></td>
+        </tr>
+        <tr>
+          <td>UDF5: </td>
+          <td><input name="udf5" type="hidden" value="" /></td>
+          
+        </tr>
+  <tr>
+          <td>COD URL: </td>
+          <td><input name="codurl" type="hidden" value="" /></td>
+          <td>TOUT URL: </td>
+          <td><input name="touturl" type="hidden" value="" /></td>
+        </tr>
+  <tr>
+          <td>Drop Category: </td>
+          <td><input name="drop_category" type="hidden" value="" /></td>
+          <td>Custom Note: </td>
+          <td><input name="custom_note" type="hidden" value="" /></td>
+        </tr>
+  <tr>
+          <td>Note Category: </td>
+          <td><input name="note_category" type="hidden" value="" /></td>
+        </tr>
+        
+
+        
+        <tr>
+            <!-- <td colspan="4"><input type="submit" type="hidden" value="Submit" /></td> -->
+        </tr>
+      </table>
     </form>
 
   </body>
